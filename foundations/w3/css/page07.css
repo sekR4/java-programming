@@ -1,0 +1,10 @@
+.orangeback {background-color: orange}
+
+h1 {font-family: -apple-system,sans-serif, Arial;
+    color: grey;
+}
+
+canvas {height: 200px;
+        border: 1px solid grey}
+
+input {font-size: 14pt}

@@ -1,0 +1,29 @@
+h1 {
+  font-family: arial;
+  color: orange;
+}
+
+#h1 {
+  font-family: arial;
+  color: orange;
+}
+
+canvas {
+  width: 300pt;
+  height: 200pt;
+  margin: 10px;
+  border: 10px black;
+}
+
+body {
+  margin: 20px;
+}
+
+
+input {
+  font-size: 20pt;
+}
+
+.orangeback {
+  background-color: orange;
+}

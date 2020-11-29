@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+        <title>Upload an Image</title>
+        <link rel="stylesheet" href="css/page07.css">
+        <script src="https://www.dukelearntoprogram.com/course1/common/js/image/SimpleImage.js"></script>
+        <script src="js/page07.js" charset="utf-8"></script>
+    </head>
+    <body>
+        <div class="orangeback">
+            Das hier sollte orange sein, wenn CSS erkannt wird.
+        </div>
+        <h1>Upload Image Prototype</h1>
+        <canvas id="canvas"></canvas>
+        <p>Filename:
+            <!-- Prototype -->
+            <!-- <input type="text" id="finput"> -->
+            <!-- <input type="button" value="Upload" onclick="upload()"> -->
+            <!-- Real input! -->
+            <input type="file" multiple="false" accept="image/*" id="finput"
+            onchange="upload()">
+
+        </p>
+
+    </body>
+</html>
