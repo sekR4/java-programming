@@ -8,10 +8,22 @@
         <script type="text/javascript" src="https://www.dukelearntoprogram.com/course1/common/js/cs101/cs101.js"></script>
         <!-- Loading my css & js modules -->
         <link rel="stylesheet" href="css/page08.css">
-        <script src="js/page08.js" charset="utf-8"></script>
+        <script src="js/page09.js" charset="utf-8"></script>
     </head>
     <body>
-        <h1>Upload an Image and make it gray</h1>
-        <canvas id="canvas"></canvas>
+        <h1>Green Screen Web Page</h1>
+        <canvas id="fgcanvas"></canvas>
+        <canvas id="bgcanvas"></canvas>
+        <p>Foreground:
+            <input type="file" multiple="false" accept="image/*" id="fgfile"
+            onchange="uploadForeground()">
+           Background:
+            <input type="file" multiple="false" accept="image/*" id="bgfile"
+            onchange="uploadBackground()">
+        </p>
+        <p>
+            <!-- replace later -->
+            <input type="button" value="Make Gray" onclick="makeGray()" >
+        </p>
     </body>
 </html>
