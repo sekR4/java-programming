@@ -1,3 +1,6 @@
 .idea
 logfile*
 .DS_Store
+*.bluej
+*.class
+*.ctxt
