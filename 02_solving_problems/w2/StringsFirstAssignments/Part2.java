@@ -32,7 +32,7 @@ public class Part2 {
     }
 
     public void testFindGeneSimple() {
-        String dna = "ATGCGGTTTGACCTAA";
+        String dna = "AAATGCCCTAACTAGATTAAGAAACC";
         System.out.println("Checking "+dna);
         String gene = findGeneSimple(dna,1,1);
         System.out.println("Found "+gene);
