@@ -60,4 +60,5 @@ public class Part1 {
        //System.out.println(findGene(dna1,0));
        print_all_genes(dna2);
     }
+    
 }

@@ -1,4 +1,13 @@
-public class WhileNotes {
+
+/**
+ * Write a description of PlayWithStorage here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+import edu.duke.*;
+
+public class PlayWithStorage {
     public static String findGene(String dna) {
 
         int startIdx = dna.indexOf("ATG");
@@ -40,9 +49,6 @@ public class WhileNotes {
         int taGIdx = findStopCodonIDX(dna,startIdx,"TAG");
         int tGAIdx = findStopCodonIDX(dna,startIdx,"TGA");
 
-        // Umstaendlicher Weg, das Minimum zwischen 3 Zahlen zu finden. Lang lebe Python :)
-//        int tmp = Math.min(taAIdx,taGIdx);
-//        int minIdx = Math.min(tmp,tGAIdx);
 
         int minIdx = 0;
         // bool 1
@@ -99,63 +105,35 @@ public class WhileNotes {
 //        System.out.println("doing something");
 
     }
+    
+    public StorageResource getAllGenes(String dna) {
+        StorageResource sr = new StorageResource();
+        int startIdx = 0;
 
-    public static int howMany(String A, String B) {
-        //howMany(“GAA”, “ATGAACGAATTGAATC”) ==3
-        int curridx = 0;
-        int cnt = 0;
-        while (curridx != -1) {
-            if (curridx == 0) {
-                curridx = B.indexOf(A, curridx);
-                if (curridx != -1) {cnt +=1;}
-            }
-            else {
-                curridx = B.indexOf(A, curridx + A.length()); //
-                if (curridx != -1) {cnt +=1;}
-            }
-//            System.out.println(curridx);
-        }
-
-//        System.out.println(cnt);
-        return cnt;
-
-    }
-    public static void findAbc(String input) {
-        int index = input.indexOf("abc");
         while (true) {
-            if (index == -1 || index >= input.length() - 3) {
-                break;
-            }
-//            System.out.println("index " + index);
 
-            String found = input.substring(index+1, index+4);
-            System.out.println(found);
-            index = input.indexOf("abc", index+3);
+            String some_gene = findGeneV3(dna, startIdx);
+            if (some_gene.isEmpty()) {break;}
 
-//            System.out.println("index after updating " + index);
+            //System.out.println(some_gene);
+            sr.add(some_gene);
+            startIdx = dna.indexOf(some_gene,startIdx) + some_gene.length();
+        }
+        
+        return sr;
+    }
+    
+    public void testOn(String dna){
+        System.out.println("getAllGenes TEST "+dna);
+        StorageResource genepool = getAllGenes(dna);
+        for (String gene : genepool.data()) {
+            System.out.println(gene);
         }
     }
-
-
-
-    public static void main(String[] args){
-//        String dna = "ATGATCGCTAATGCTTAAGCTATG";
-        String dna = "ATGATCGCTAATGCTTAAGCTATGATG............TAA";
-
-//        dna = "XXXATG000000TAA000";
-//        dna = "XXX000000TAA000";
-//        dna = "XXX000000000";
-//        dna = "XXXATG000000TAATAA000";
-//        System.out.println(findGene(dna));
-//        System.out.println(findStopCodonIDX(dna,0,"TAA"));
-//        System.out.println(findGeneNew(dna));
-//        if ("".isEmpty()) {System.out.println("This string is empty.");}
-//        print_all_genes("AATGCTAACTAGCTGACTAAT");
-//        System.out.println(howMany("GAA", "ATGAACGAATTGAATC"));
-        System.out.println(howMany("C", "ABCDCC"));
-        System.out.println(howMany("G", "ABCDCC"));
-//        System.out.println(howMany("AA", "cTccc"));
-//        findAbc("abcd");
-//        findAbc("abcabcabcabca");
+    
+    public void test() {
+        String dna = "ATGATCGCTAATGCTTAAGCTATGATGATCGCTAATGCTTAAGCTATG";
+        testOn(dna);
+    
     }
 }
