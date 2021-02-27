@@ -1,5 +1,6 @@
 import org.apache.commons.csv.*;
 import edu.duke.*;
+import java.io.*;
 
 public class Temperature {
     
@@ -39,6 +40,46 @@ public class Temperature {
         CSVRecord largest = MaxV2(fr.getCSVParser());
         System.out.println(largest.get("TemperatureF") + " " + largest.get("TimeEST"));
     
+    }
+    
+    public CSVRecord HottestInManyDays(){
+        CSVRecord largestSoFar = null; 
+        DirectoryResource dr = new DirectoryResource();
+        
+        for (File f : dr.selectedFiles()) {
+            FileResource fr = new FileResource(f);
+            CSVRecord current = MaxV2(fr.getCSVParser());
+            
+            if (largestSoFar == null){
+                largestSoFar = current;
+            }
+            else {
+                double current_tmp =  Double.parseDouble(current.get("TemperatureF"));
+                double largest_tmp =  Double.parseDouble(largestSoFar.get("TemperatureF"));
+                if (current_tmp > largest_tmp){
+                    largestSoFar=current;
+                }
+            }
+        }
+        
+        return largestSoFar;
+    }
+    
+    public void testHottestInManyDays(){
+        CSVRecord largest = HottestInManyDays();
+        System.out.println(largest.get("TemperatureF") + " " + largest.get("DateUTC"));
+    
+    
+    }
+    
+    public CSVRecord maxof2(CSVRecord currentRow, CSVRecord largestSoFar){
+        if (largestSoFar == null){largestSoFar = currentRow;}
+        else {
+            double current_tmp =  Double.parseDouble(currentRow.get("TemperatureF"));
+            double largest_tmp =  Double.parseDouble(largestSoFar.get("TemperatureF"));
+            if (current_tmp > largest_tmp){largestSoFar=currentRow;}
+        }
+        return largestSoFar;
     }
     
     public void main() {
