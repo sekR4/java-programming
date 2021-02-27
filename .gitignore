@@ -4,3 +4,8 @@ logfile*
 *.bluej
 *.class
 *.ctxt
+*.csv
+*.zip
+commons-csv-1.8/
+.ipynb_checkpoints
+libraries/
