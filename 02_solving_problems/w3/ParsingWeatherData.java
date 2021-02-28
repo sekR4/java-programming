@@ -10,7 +10,7 @@ public class ParsingWeatherData {
             double current_temperature = Double.parseDouble(row.get("TemperatureF"));
             double minimum_temperature = Double.parseDouble(row.get("TemperatureF"));
             if(current_temperature < minimum_temperature){
-                if (current_temperature != -9999){lowest = row;}
+                if (current_temperature != -9999){lowest = row;} // NOTE: avoid garbage data & short circuit eval
             }
         }
         return lowest;
@@ -31,13 +31,20 @@ public class ParsingWeatherData {
     }
     
     public String fileWithColdestTemperature(){
+        // Returns name of file with minimum temperature
         
         CSVRecord lowest = null;
+        String filename = "";
         DirectoryResource dr = new DirectoryResource();
+        // String filename = f.getName(); 
         
         for (File f : dr.selectedFiles()) {
             FileResource fr = new FileResource(f);
-            CSVRecord current = coldestHourInFile(fr.getCSVParser());
+            CSVRecord row = coldestHourInFile(fr.getCSVParser());
+            lowest = minOf2(lowest,row);
+            if (row == lowest){
+                filename = f.getName();
+            }
         }
     return "";
     }
