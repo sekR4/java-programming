@@ -27,4 +27,8 @@ public class CharacterDemo {
             System.out.println(ch + " " + uch + " " + lch);
         }
     }
+
+    // public static void main(String[] args) {
+    // conversionTest();
+    // }
 }

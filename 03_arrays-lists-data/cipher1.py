@@ -1,5 +1,5 @@
 def encrypt_message(message: str, key: int = 17):
-    """Encrypts a message with a simple cipher algorithm.
+    """Encrypts/reverses each letter in a message.
 
     Parameters
     ----------
@@ -15,9 +15,7 @@ def encrypt_message(message: str, key: int = 17):
     """
 
     alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-    shifted_alphabet = alphabet[key:]
-    shifted_alphabet = shifted_alphabet + alphabet[:key]
-
+    shifted_alphabet = alphabet[key:] + alphabet[:key]
     encrypted_message = ""
 
     for i in message.upper():
@@ -39,6 +37,11 @@ def encrypt_message(message: str, key: int = 17):
 
 
 assert encrypt_message("I AM", 17) == "Z RD"
+assert encrypt_message("A BAT", 19) == "T UTM"
 
-print(encrypt_message("I AM"))
+print(encrypt_message("A house can't be green. Right?", 19))
+
+key = 19
+encrypted = encrypt_message("A house can't be green. Right?", key)
+print(encrypt_message(encrypted, 26 - key))
 
