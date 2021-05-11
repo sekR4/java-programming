@@ -11,3 +11,4 @@ commons-csv-1.8/
 libraries/
 doc/
 .vscode
+*.TXT

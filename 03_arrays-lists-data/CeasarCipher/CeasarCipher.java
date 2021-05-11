@@ -24,7 +24,7 @@ public class CeasarCipher {
 
     public void test_Ceasar() {
         int key = 17;
-        FileResource fr = new FileResource();
+        FileResource fr = new FileResource("message0.txt");
         String message = fr.asString();
         String encrypted = encrypt(message, key);
         System.out.println(encrypted);
@@ -32,4 +32,8 @@ public class CeasarCipher {
         System.out.println(decrypted);
 
     }
+
+    // public static void main(String[] args) {
+    // System.out.println("Hello, World.");
+    // }
 }
